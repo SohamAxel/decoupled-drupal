@@ -1,0 +1,8 @@
+name: Contact form API
+description: Exposes personal contact form to api endpoint.
+type: module
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - drupal:contact
+  - drupal:rest

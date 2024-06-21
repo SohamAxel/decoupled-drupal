@@ -1,0 +1,18 @@
+uuid: 52c1c2f8-a493-40a4-a695-1c6d1f4d5ea2
+langcode: en
+status: true
+dependencies:
+  module:
+    - basic_auth
+    - contact_form_api
+    - serialization
+id: contact_user_resource
+plugin_id: contact_user_resource
+granularity: resource
+configuration:
+  methods:
+    - POST
+  formats:
+    - json
+  authentication:
+    - basic_auth
