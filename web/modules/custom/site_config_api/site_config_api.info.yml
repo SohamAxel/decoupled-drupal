@@ -1,0 +1,7 @@
+name: Site Configuration API
+description: Provides an API to export site configurations.
+type: module
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - drupal:rest
