@@ -9,21 +9,19 @@ use Drupal\rest\ResourceResponse;
 use Drupal\site_config_api\Form\AllowConfigForm;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Exception\BadRequestException;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 /**
- * Provides a resource to export site configuration.
+ * Provides a resource to list exposed site configuration.
  *
  * @RestResource(
- *  id = "site_config_resource",
- *  label = @Translation("Site Config Resource"),
+ *  id = "site_config_list_resource",
+ *  label = @Translation("Site Config List Resource"),
  *  uri_paths = {
- *    "canonical" = "/api/config-export/{config_name}"
+ *    "canonical" = "/api/config-list"
  *  }
  * )
  */
-class SiteConfigurationResource extends ResourceBase {
+class AllowedSiteConfigList extends ResourceBase {
   /**
    * The config factory service.
    *
@@ -77,44 +75,22 @@ class SiteConfigurationResource extends ResourceBase {
   /**
    * Responds to GET requests.
    *
-   * Returns config data for valid configurations.
-   *
-   * @throws \Symfony\Component\HttpFoundation\Exception\BadRequestException
-   *   Throws error incase config not found.
-   *
-   * @throws \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException
-   *   Throws error incase the cofig is not exposed.
+   * Returns list of exposed config names.
    *
    * @return \Drupal\rest\ResourceResponse
-   *   returns configuration if successful.
+   *   returns list of exposed config names if successful.
    */
-  public function get(string $config_name) {
-
-    $config = $this->configFactory->get($config_name);
-    $doesConfigExist = !$config->isNew();
-
-    if ($doesConfigExist) {
-      // If the requested config is not exposed, throw error.
-      $allowedConfigs = $this->configFactory->get(AllowConfigForm::CONFIG_NAME)->get('allowed_configs') ?? [];
-      if (!in_array($config_name, $allowedConfigs)) {
-        throw new AccessDeniedHttpException("You do not have access to the config.");
-      }
-      $configData[$config_name] = $config->getRawData();
-      $response = new ResourceResponse($configData);
-
-      // Adding the config cache tag which invalidates the data
-      // when allowed configs changes.
-      $response->addCacheableDependency(CacheableMetadata::createFromRenderArray([
-        '#cache' => [
-          'tags' => ['config:site_config_api.allowed_config'],
-        ],
-      ]));
-      return $response;
-    }
-    else {
-      throw new BadRequestException("Configuration ($config_name) does not exists.");
-    }
-
+  public function get() {
+    $configData = $this->configFactory->get(AllowConfigForm::CONFIG_NAME)->get('allowed_configs') ?? [];
+    $response = new ResourceResponse($configData);
+    // Adding the config cache tag which invalidates the data
+    // when allowed configs changes.
+    $response->addCacheableDependency(CacheableMetadata::createFromRenderArray([
+      '#cache' => [
+        'tags' => ['config:site_config_api.allowed_config'],
+      ],
+    ]));
+    return $response;
   }
 
 }

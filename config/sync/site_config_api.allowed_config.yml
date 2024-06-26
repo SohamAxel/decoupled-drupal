@@ -1,0 +1,3 @@
+allowed_configs:
+  - node.type.article
+  - system.site

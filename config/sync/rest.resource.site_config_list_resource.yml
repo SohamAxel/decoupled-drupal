@@ -1,0 +1,18 @@
+uuid: 3d0448a2-0f7d-4aaa-a78c-e8e07ea48d97
+langcode: en
+status: true
+dependencies:
+  module:
+    - basic_auth
+    - serialization
+    - site_config_api
+id: site_config_list_resource
+plugin_id: site_config_list_resource
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - basic_auth
