@@ -1,0 +1,7 @@
+site_config_api.allowed_config.form_route:
+  path: /admin/expose_configs
+  defaults:
+    _form: Drupal\site_config_api\Form\AllowConfigForm
+    _title: Expose Configs to Frontend
+  requirements:
+    _permission: 'administer site configuration'
