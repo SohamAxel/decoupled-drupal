@@ -1,0 +1,7 @@
+weather_int.config.form_route:
+  path: /admin/weather_int/settings
+  defaults:
+    _form: Drupal\weather_int\Form\WeatherSettings
+    _title: Weather Integration Settings
+  requirements:
+    _permission: 'administer site configuration'

@@ -1,0 +1,26 @@
+uuid: 8ea3137d-9550-413f-9f23-ed40c48b7e75
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - weather_int
+  theme:
+    - olivero
+id: olivero_weatherblock
+theme: olivero
+region: sidebar
+weight: 0
+provider: null
+plugin: weather_block
+settings:
+  id: weather_block
+  label: 'Weather Display'
+  label_display: visible
+  provider: weather_int
+  weather_location: Pune
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

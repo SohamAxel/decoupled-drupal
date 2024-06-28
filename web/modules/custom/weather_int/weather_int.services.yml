@@ -1,0 +1,4 @@
+services:
+  weather_int.weatherapi_integration:
+    class: \Drupal\weather_int\WeatherApiIntegration
+    arguments: ['@http_client', '@config.factory', '@logger.factory']
