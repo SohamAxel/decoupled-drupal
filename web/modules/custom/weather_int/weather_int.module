@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Module file to implement various hooks.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function weather_int_theme($existing, $type, $theme, $path) {
+  return [
+    'weather_display' => [
+      'variables' => [
+        'location' => NULL,
+        'icon' => NULL,
+        'temperature' => NULL,
+        'wind' => NULL,
+        'feels_like' => NULL,
+        'precipitation' => NULL,
+      ],
+    ],
+  ];
+}

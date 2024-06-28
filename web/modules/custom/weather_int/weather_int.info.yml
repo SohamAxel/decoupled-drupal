@@ -1,0 +1,6 @@
+name: Weather Integration
+description: Provides a block to get live weather data.
+type: module
+core_version_requirement: ^10
+package: Custom
+configure: weather_int.config.form_route
