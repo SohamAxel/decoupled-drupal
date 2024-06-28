@@ -15,13 +15,6 @@ use GuzzleHttp\Exception\ClientException;
 class WeatherApiIntegration {
 
   /**
-   * The base url of weather api.
-   *
-   * @var string
-   */
-  const BASE_WEATHERAPI_URL = "http://api.weatherapi.com/v1";
-
-  /**
    * The http client.
    *
    * @var \GuzzleHttp\Client
@@ -77,6 +70,13 @@ class WeatherApiIntegration {
 
     // The access key of weatherapi account.
     $access_key = $this->config->get("api_key");
+    $base_url = $this->config->get("base_url");
+
+    if (!$base_url) {
+      $this->logger->get("weather_int_api")->error("No Base url provided in config");
+      $returnData['isSuccessful'] = FALSE;
+      return $returnData;
+    }
 
     // The required endpoint parameters.
     $parameters = [
@@ -85,7 +85,7 @@ class WeatherApiIntegration {
     ];
 
     // Building the request url.
-    $currentWeatherEndpoint = static::BASE_WEATHERAPI_URL . "/current.json";
+    $currentWeatherEndpoint = $base_url . "/current.json";
     $urlParams = http_build_query($parameters);
     $urlEndpoint = "$currentWeatherEndpoint?$urlParams";
 
