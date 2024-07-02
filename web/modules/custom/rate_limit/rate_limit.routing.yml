@@ -1,0 +1,7 @@
+rate_limit.settings.route:
+  path: '/admin/config/rate_limit/settings'
+  defaults:
+    _title: 'Rate Limit Settings'
+    _form: 'Drupal\rate_limit\Form\SettingsForm'
+  requirements:
+    _permission: 'administer site configuration'

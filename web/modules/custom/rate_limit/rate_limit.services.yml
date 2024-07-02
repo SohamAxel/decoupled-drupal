@@ -1,0 +1,6 @@
+services:
+  rate_limit.event_subscriber:
+    class: Drupal\rate_limit\EventSubscriber\RateLimitSubscriber
+    arguments: ['@database', '@config.factory']
+    tags:
+      - { name: event_subscriber }
