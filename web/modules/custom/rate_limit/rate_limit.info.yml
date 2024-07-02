@@ -1,0 +1,8 @@
+name: Rate Limit
+description: Adds rate limitation to rest apis
+type: module
+core_version_requirement: ^10
+package: Custom
+configure: rate_limit.settings.route
+dependencies:
+  - drupal:rest

@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * This file is used to write install uninstall hooks that used in the module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function rate_limit_schema() {
+  $schema['rate_limit'] = [
+    'description' => 'Stores module data as key/value pairs per user.',
+    'fields' => [
+      'ip' => [
+        'description' => 'The client Ip address',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'timestamp' => [
+        'description' => 'The timestamp of user access',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'count' => [
+        'description' => 'The count of number of times the api accessed',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => [
+      'ip',
+    ],
+  ];
+  return $schema;
+}
