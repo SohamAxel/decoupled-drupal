@@ -1,0 +1,14 @@
+uuid: e29824dd-95cd-44dc-8b0c-459739d44cc1
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.delete_own_content
+  module:
+    - user
+id: user_add_role_action.delete_own_content
+label: 'Add the Delete Own Content role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: delete_own_content

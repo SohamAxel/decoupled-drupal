@@ -1,0 +1,14 @@
+uuid: be6b0644-db3d-4666-b92a-258fbd23aec5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.delete_own_content
+  module:
+    - user
+id: user_remove_role_action.delete_own_content
+label: 'Remove the Delete Own Content role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: delete_own_content

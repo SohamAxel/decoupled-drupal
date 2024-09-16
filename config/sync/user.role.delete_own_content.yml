@@ -1,0 +1,14 @@
+uuid: 8953f9b1-7bf7-4905-b097-1a309e726215
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+  module:
+    - node
+id: delete_own_content
+label: 'Delete Own Content'
+weight: 4
+is_admin: null
+permissions:
+  - 'delete own article content'

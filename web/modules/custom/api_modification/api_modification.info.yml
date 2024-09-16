@@ -1,0 +1,5 @@
+name: 'Api Modification'
+type: module
+description: 'A module to add modifications to rest apis'
+package: Custom
+core_version_requirement: ^10 || ^11
