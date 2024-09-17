@@ -15,11 +15,18 @@
         }
     ],
     "require": {
-        "composer/installers": "^2.0",
+        "composer/installers": "^2.3",
         "drupal/core-composer-scaffold": "^10.2",
         "drupal/core-project-message": "^10.2",
         "drupal/core-recommended": "^10.2",
-        "drush/drush": "^12.5"
+        "drupal/openapi_jsonapi": "^3.0",
+        "drupal/openapi_rest": "^2.0@RC",
+        "drupal/openapi_ui": "^1.0@RC",
+        "drupal/openapi_ui_swagger": "^1.1",
+        "drupal/restui": "^1.22",
+        "drush/drush": "^12.5",
+        "mnsami/composer-custom-directory-installer": "^2.0",
+        "swagger-api/swagger-ui": "3.0.17"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -33,7 +40,8 @@
             "drupal/core-project-message": true,
             "phpstan/extension-installer": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "mnsami/composer-custom-directory-installer": true
         },
         "sort-packages": true
     },
@@ -48,7 +56,7 @@
                 "type:drupal-core"
             ],
             "web/libraries/{$name}": [
-                "type:drupal-library"
+                "type:drupal-library", "swagger-api/swagger-ui", "type:drupal-library"
             ],
             "web/modules/contrib/{$name}": [
                 "type:drupal-module"
