@@ -1,0 +1,16 @@
+uuid: 02973c81-76cd-4fef-bfeb-44c9cbdb5dbc
+langcode: en
+status: true
+dependencies: {  }
+name: test_graphql_server
+label: 'Test GraphQl Server'
+endpoint: /graphql
+debug_flag: 0
+schema: example
+caching: true
+batching: true
+disable_introspection: false
+query_depth: null
+query_complexity: null
+schema_configuration: {  }
+persisted_queries_settings: {  }
