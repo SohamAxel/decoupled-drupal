@@ -1,0 +1,21 @@
+uuid: 7efcd28e-237a-4aa9-a04b-0e57a81c5efc
+langcode: en
+status: true
+dependencies:
+  module:
+    - custom_rest_resource
+    - serialization
+    - user
+id: custom_rest_resource_customrestresource
+plugin_id: custom_rest_resource_customrestresource
+granularity: resource
+configuration:
+  methods:
+    - GET
+    - POST
+    - DELETE
+    - PATCH
+  formats:
+    - json
+  authentication:
+    - cookie
